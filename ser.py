@@ -5,7 +5,7 @@ import main
 #os.system("sudo su")
 #os.system("export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json")
 
-def ser()
+def ser():
 	ser = serial.Serial('/dev/ttyACM0',9600)
 	s = [0,1]
 	while True:
