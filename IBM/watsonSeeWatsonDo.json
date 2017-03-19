@@ -1,0 +1,62 @@
+{
+    "custom_classes": 2,
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "class": "harry",
+                            "score": 0.589597
+                        }
+                    ],
+                    "classifier_id": "nwHacks_1233774800",
+                    "name": "nwHacks_1233774800"
+                },
+                {
+                    "classes": [
+                        {
+                            "class": "cowboy hat",
+                            "score": 0.769,
+                            "type_hierarchy": "/headdress/cowboy hat"
+                        },
+                        {
+                            "class": "hat",
+                            "score": 0.868
+                        },
+                        {
+                            "class": "headdress",
+                            "score": 0.868
+                        },
+                        {
+                            "class": "Panama hat",
+                            "score": 0.616,
+                            "type_hierarchy": "/headdress/Panama hat"
+                        },
+                        {
+                            "class": "street clothes",
+                            "score": 0.56
+                        },
+                        {
+                            "class": "fedora (felt hat)",
+                            "score": 0.554,
+                            "type_hierarchy": "/headdress/fedora (felt hat)"
+                        },
+                        {
+                            "class": "alizarine red color",
+                            "score": 0.746
+                        },
+                        {
+                            "class": "claret red color",
+                            "score": 0.709
+                        }
+                    ],
+                    "classifier_id": "default",
+                    "name": "default"
+                }
+            ],
+            "image": "bb.jpg"
+        }
+    ],
+    "images_processed": 1
+}
