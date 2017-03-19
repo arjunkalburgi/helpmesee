@@ -67,7 +67,7 @@ class VisionBot:
 			# print()
 
 			# FACES
-			faceres = response["responses"][0]["faceAnnotations"][0]
+			faceres = response["responses"][0]["faceAnnotations"]
 			emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
 			i = 0
 			for face in faceres: 
