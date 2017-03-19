@@ -1,0 +1,56 @@
+{
+    "custom_classes": 2,
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "class": "guitarist",
+                            "score": 0.703,
+                            "type_hierarchy": "/person/entertainer/musician/guitarist"
+                        },
+                        {
+                            "class": "musician",
+                            "score": 0.707
+                        },
+                        {
+                            "class": "entertainer",
+                            "score": 0.707
+                        },
+                        {
+                            "class": "person",
+                            "score": 0.755
+                        },
+                        {
+                            "class": "disk jockey",
+                            "score": 0.578,
+                            "type_hierarchy": "/person/disk jockey"
+                        },
+                        {
+                            "class": "weld",
+                            "score": 0.554,
+                            "type_hierarchy": "/junction/joint/weld"
+                        },
+                        {
+                            "class": "joint",
+                            "score": 0.554
+                        },
+                        {
+                            "class": "junction",
+                            "score": 0.554
+                        },
+                        {
+                            "class": "coal black color",
+                            "score": 0.97
+                        }
+                    ],
+                    "classifier_id": "default",
+                    "name": "default"
+                }
+            ],
+            "image": "image.jpg"
+        }
+    ],
+    "images_processed": 1
+}

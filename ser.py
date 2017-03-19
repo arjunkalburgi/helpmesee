@@ -1,6 +1,6 @@
 import serial
 import main
-#import os
+import os
 
 #os.system("sudo su")
 #os.system("export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json")
