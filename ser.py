@@ -18,4 +18,6 @@ def ser():
 			#PUT func here test1.main()
 			main.main()
 
-		
+
+if __name__ == '__ser__':
+	ser()
