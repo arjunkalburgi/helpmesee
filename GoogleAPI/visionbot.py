@@ -64,7 +64,7 @@ class VisionBot:
 			})
 			response = service_request.execute()
 
-			# print()
+			print(response)
 
 			# FACES
 			faceres = response["responses"][0]["faceAnnotations"]
