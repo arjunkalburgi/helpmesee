@@ -157,57 +157,59 @@ class VisionBot:
 		midconflabels = photoanalysis["LABEL_DETECTION"]["mid"]
 		lowconflabels = photoanalysis["LABEL_DETECTION"]["low"]
 		if highconflabels or midconflabels or lowconflabels: 
-			sentence = "Looks like it "
+			carryover = False
 			if highconflabels: 
-				sentence = sentence + "is "
+				sentence = sentence + "I can see "
 				first = True
 				for label in highconflabels: 
-					if label[-1] == "s": 
-						sentence = sentence + "a "
 					if first: 
+						if label[-1] == "s": 
+							sentence = sentence + "a "
 						sentence = sentence + label + " "
 					else: 
-						sentence = sentence + "or "+ label + " "
-				if midconflabels: 
-					sentence = sentence + "with "
-				elif lowconflabels: 
-					sentence = sentence + "with maybe "
-			if midconflabels: 
-				if sentence[-5:-1] is not "with": 
-					sentence = sentence + "could be "
+						if label[-1] == "s": 
+							sentence = sentence + "and a"+ label + " "
+						else: 
+							sentence = sentence + "and "+ label + " "
+			elif midconflabels: 
+				sentence = sentence + "I think I can see "
 				first = True
 				for label in midconflabels: 
-					if label[-1] == "s": 
-						sentence = sentence + "a "
 					if first: 
+						if label[-1] == "s": 
+							sentence = sentence + "a "
 						sentence = sentence + label + " "
 					else: 
-						sentence = sentence + "or "+ label + " "
-				if lowconflabels: 
-					sentence = sentence + "with maybe "
-			if lowconflabels: 
-				if sentence[-12:-1] is not "with maybe ": 
-					sentence = sentence + "might be "
+						if label[-1] == "s": 
+							sentence = sentence + "and a"+ label + " "
+						else: 
+							sentence = sentence + "and "+ label + " "
+			elif lowconflabels: 
+				sentence = sentence + "I might be seeing "
 				first = True
 				for label in lowconflabels: 
-					if label[-1] == "s": 
-						sentence = sentence + "a "
 					if first: 
+						if label[-1] == "s": 
+							sentence = sentence + "a "
 						sentence = sentence + label + " "
 					else: 
-						sentence = sentence + "or "+ label + " "
-			sentence = sentence + ". "
+						if label[-1] == "s": 
+							sentence = sentence + "and a"+ label + " "
+						else: 
+							sentence = sentence + "and "+ label + " "
+			sentence = sentence.strip() + ". "
 
 		text = photoanalysis["TEXT_DETECTION"]
 		if len(text) > 0: 
-			sentence = sentence + "It has text saying "
+			sentence = sentence + "can read text saying "
 			first = True
 			for t in text: 
 				if first: 
 					sentence = sentence + t
 				else: 
 					sentence = sentence + "and " + t
-		print json.dumps(photoanalysis, sort_keys=True, indent=4)
+			sentence = sentence.strip() + ". "
+		
 		if len(photoanalysis["FACE_DETECTION"]) > 0: 
 			if len(photoanalysis["FACE_DETECTION"]) > 1: 
 				sentence = sentence + "There are " + str(len(photoanalysis["FACE_DETECTION"])) + " faces showing "
@@ -250,7 +252,7 @@ class VisionBot:
 							first = False
 						else: 
 							sentence = sentence + "and " + emo + " "
-
+				sentence = sentence.strip() + ". "
 			else: 
 				sentence = sentence + "There is one face that "
 
@@ -264,7 +266,6 @@ class VisionBot:
 					sentence = sentence + "seems to express " + midconfface + ". "
 				elif lowconfface: 
 					sentence = sentence + "could be expressing " + highconfface + ". "
-			sentence = sentence + ". "
 
 		highconflandmark = photoanalysis["LANDMARK_DETECTION"]["high"]
 		midconflandmark = photoanalysis["LANDMARK_DETECTION"]["mid"]

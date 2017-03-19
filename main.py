@@ -1,19 +1,17 @@
-import picamera
+from Camera import CameraBot
+
 from captionbot import CaptionBot
 from GoogleAPI.visionbot import VisionBot
 from IBM.bot import WatsonBot
 import os
 
-def takephoto():
-	camera = picamera.PiCamera()
-	camera.rotation = 270
-	camera.capture('image.jpg')
-
 def main(): 
-	# TAKE THE PHOTO
 	file = "image.jpg"
-	takephoto()
-	camera.stop()
+
+	# TAKE THE PHOTO
+	cam = CameraBot()
+	cam.takephoto(file)
+	cam.closecam()
 
 	# ANALYZE THE PHOTO
 	c = CaptionBot() 

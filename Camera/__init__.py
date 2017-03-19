@@ -1,0 +1,1 @@
+from picamerabot import CameraBot
