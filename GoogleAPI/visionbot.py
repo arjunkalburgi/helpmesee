@@ -67,67 +67,72 @@ class VisionBot:
 			# print()
 
 			# FACES
-			faceres = response["responses"][0]["faceAnnotations"]
-			emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
-			i = 0
-			for face in faceres: 
-				returndict["FACE_DETECTION"][i] = {"low": "", "mid": "", "high": ""}
-				for emo in emotions: 
-					if face[emo[0]] > 0.9: 
-						returndict["FACE_DETECTION"][i]["high"] = emo[1]
-						num_high_conf = num_high_conf + 1
-					elif face[emo[0]] > 0.8: 
-						returndict["FACE_DETECTION"][i]["mid"] = emo[1]
-						num_mid_conf = num_mid_conf + 1
-					elif face[emo[0]] > 0.7: 
-						returndict["FACE_DETECTION"][i]["low"] = emo[1]
-						num_low_conf = num_low_conf + 1
-				i = i + 1
+			if response["responses"][0]["faceAnnotations"]: 
+				faceres = response["responses"][0]["faceAnnotations"]
+				emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
+				i = 0
+				for face in faceres: 
+					returndict["FACE_DETECTION"][i] = {"low": "", "mid": "", "high": ""}
+					for emo in emotions: 
+						if face[emo[0]] > 0.9: 
+							returndict["FACE_DETECTION"][i]["high"] = emo[1]
+							num_high_conf = num_high_conf + 1
+						elif face[emo[0]] > 0.8: 
+							returndict["FACE_DETECTION"][i]["mid"] = emo[1]
+							num_mid_conf = num_mid_conf + 1
+						elif face[emo[0]] > 0.7: 
+							returndict["FACE_DETECTION"][i]["low"] = emo[1]
+							num_low_conf = num_low_conf + 1
+					i = i + 1
 
 			# LABELS 
-			labelres = response["responses"][0]["labelAnnotations"]
-			for label in labelres: 
-				if label["score"] > 0.9: 
-					returndict["LABEL_DETECTION"]["high"].append(label["description"])
-					num_high_conf = num_high_conf + 1
-				elif label["score"] > 0.8: 
-					returndict["LABEL_DETECTION"]["mid"].append(label["description"])
-					num_mid_conf = num_mid_conf + 1
-				elif label["score"] > 0.7: 
-					returndict["LABEL_DETECTION"]["low"].append(label["description"])
-					num_low_conf = num_low_conf + 1
+			if response["responses"][0]["labelAnnotations"]: 
+				labelres = response["responses"][0]["labelAnnotations"]
+				for label in labelres: 
+					if label["score"] > 0.9: 
+						returndict["LABEL_DETECTION"]["high"].append(label["description"])
+						num_high_conf = num_high_conf + 1
+					elif label["score"] > 0.8: 
+						returndict["LABEL_DETECTION"]["mid"].append(label["description"])
+						num_mid_conf = num_mid_conf + 1
+					elif label["score"] > 0.7: 
+						returndict["LABEL_DETECTION"]["low"].append(label["description"])
+						num_low_conf = num_low_conf + 1
 
 			# TEXT 
-			textres = response["responses"][0]["textAnnotations"]
-			for text in textres: 
-				if "locale" in text: 
-					returndict["TEXT_DETECTION"].append(text["description"])
+			if response["responses"][0]["textAnnotations"]: 
+				textres = response["responses"][0]["textAnnotations"]
+				for text in textres: 
+					if "locale" in text: 
+						returndict["TEXT_DETECTION"].append(text["description"])
 
 			# LANDMARK 
-			landres = response["responses"][0]["landmarkAnnotations"]
-			for landmark in landres: 
-				if landmark["score"] > 0.9:
-					returndict["LANDMARK_DETECTION"]["high"].append(landmark["description"])
-					num_high_conf = num_high_conf + 1
-				elif landmark["score"] > 0.8: 
-					returndict["LANDMARK_DETECTION"]["mid"].append(landmark["description"])
-					num_mid_conf = num_mid_conf + 1
-				elif landmark["score"] > 0.7: 
-					returndict["LANDMARK_DETECTION"]["low"].append(landmark["description"])
-					num_low_conf = num_low_conf + 1
+			if response["responses"][0]["landmarkAnnotations"]: 
+				landres = response["responses"][0]["landmarkAnnotations"]
+				for landmark in landres: 
+					if landmark["score"] > 0.9:
+						returndict["LANDMARK_DETECTION"]["high"].append(landmark["description"])
+						num_high_conf = num_high_conf + 1
+					elif landmark["score"] > 0.8: 
+						returndict["LANDMARK_DETECTION"]["mid"].append(landmark["description"])
+						num_mid_conf = num_mid_conf + 1
+					elif landmark["score"] > 0.7: 
+						returndict["LANDMARK_DETECTION"]["low"].append(landmark["description"])
+						num_low_conf = num_low_conf + 1
 
 			# LOGO
-			logores = response["responses"][0]["logoAnnotations"]
-			for logo in logores: 
-				if logo["score"] > 0.9:
-					returndict["LOGO_DETECTION"]["high"].append(logo["description"])
-					num_high_conf = num_high_conf + 1
-				elif logo["score"] > 0.8: 
-					returndict["LOGO_DETECTION"]["mid"].append(logo["description"])
-					num_mid_conf = num_mid_conf + 1
-				elif logo["score"] > 0.7: 
-					returndict["LOGO_DETECTION"]["low"].append(logo["description"])
-					num_low_conf = num_low_conf + 1
+			if response["responses"][0]["logoAnnotations"]: 
+				logores = response["responses"][0]["logoAnnotations"]
+				for logo in logores: 
+					if logo["score"] > 0.9:
+						returndict["LOGO_DETECTION"]["high"].append(logo["description"])
+						num_high_conf = num_high_conf + 1
+					elif logo["score"] > 0.8: 
+						returndict["LOGO_DETECTION"]["mid"].append(logo["description"])
+						num_mid_conf = num_mid_conf + 1
+					elif logo["score"] > 0.7: 
+						returndict["LOGO_DETECTION"]["low"].append(logo["description"])
+						num_low_conf = num_low_conf + 1
 
 		return returndict
 
