@@ -1,9 +1,9 @@
 import serial
 import main
-import os
+#import os
 
-os.system("sudo su")
-os.system("export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json")
+#os.system("sudo su")
+#os.system("export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json")
 
 ser = serial.Serial('/dev/ttyACM0',9600)
 s = [0,1]
