@@ -341,6 +341,7 @@ class VisionBot:
 		return sentence
 
 	def file_caption(self, filename): 
+
 		photoanalysis = self.analyzephoto(filename)
 		return self.speakanalysis(photoanalysis)
 		

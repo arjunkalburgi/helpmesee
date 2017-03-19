@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
 "classifier_ids": ["nwHacks_1233774800", "default"] 
+=======
+"classifier_ids": ["dogs_823032113", "default"] 
+>>>>>>> 32a880d9db54632d0f5d067c8d92d532df467ef7
 }
