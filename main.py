@@ -18,12 +18,11 @@ def main():
 	v = VisionBot()
 	w = WatsonBot()
 
-	print(c.file_caption(file))
-	print(v.file_caption(file))
-	print(w.see_anyone(file))
-
+	prediction = c.file_caption(file) + v.file_caption(file) + w.see_anyone(file)
+	print (prediction)
+	prediction.decode('unicode_escape').encode('ascii','ignore')
 	# SPEAK TO THE USER 
-	os.system("./speak.sh " + c.file_caption(file) +" "+ v.file_caption(file) +" "+ w.see_anyone(file))
+	os.system("./speech.sh " + prediction)
 	# STORE THE QUERY + INFO
 	
 

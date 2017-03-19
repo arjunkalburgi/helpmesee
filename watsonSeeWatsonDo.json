@@ -1,0 +1,55 @@
+{
+    "custom_classes": 2,
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "class": "storage space",
+                            "score": 0.648
+                        },
+                        {
+                            "class": "drawer",
+                            "score": 0.568
+                        },
+                        {
+                            "class": "camper trailer",
+                            "score": 0.561,
+                            "type_hierarchy": "/vehicle/camper trailer"
+                        },
+                        {
+                            "class": "vehicle",
+                            "score": 0.561
+                        },
+                        {
+                            "class": "cooler",
+                            "score": 0.554,
+                            "type_hierarchy": "/appliance/refrigerator/cooler"
+                        },
+                        {
+                            "class": "refrigerator",
+                            "score": 0.564
+                        },
+                        {
+                            "class": "appliance",
+                            "score": 0.567
+                        },
+                        {
+                            "class": "olive green color",
+                            "score": 0.614
+                        },
+                        {
+                            "class": "ash grey color",
+                            "score": 0.565
+                        }
+                    ],
+                    "classifier_id": "default",
+                    "name": "default"
+                }
+            ],
+            "image": "image.jpg"
+        }
+    ],
+    "images_processed": 1
+}
