@@ -124,7 +124,7 @@ class VisionBot:
 
 		return returndict
 
-	def speakanalysis(self, photoanalysisarray): 
+	def speakanalysis(self, photoanalysis): 
 		'''
 		photoanalysis = {"FACE_DETECTION": [{"low": [], "mid": [], "high": []}], 
 			"LABEL_DETECTION": {"low": [], "mid": [], "high": []},
@@ -147,7 +147,7 @@ class VisionBot:
 		'LANDMARK_DETECTION': {'high': [], 'low': [], 'mid': []}, 
 		'LABEL_DETECTION': {'high': ['cat', 'mammal'], 'low': ['whiskers'], 'mid': []}}
 		'''
-		photoanalysis = photoanalysisarray[0]
+		# photoanalysis = photoanalysisarray[0]
 
 
 		sentence = ""
