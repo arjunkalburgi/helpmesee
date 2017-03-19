@@ -335,8 +335,5 @@ class VisionBot:
 
 		photoanalysis = self.analyzephoto(filename)
 		return self.speakanalysis(photoanalysis)
-		
-		# SAVE PHOTO AND DATA
-		# storedetection(photoanalysis)
 
 

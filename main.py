@@ -1,29 +1,26 @@
-from Camera import CameraBot
 
-from captionbot import CaptionBot
-from GoogleAPI.visionbot import VisionBot
-from IBM.bot import WatsonBot
 
-def main(): 
+def main(cameraBot, captionBot, visionBot, watsonBot, storeBot): 
 	file = "image.jpg"
 
 	# TAKE THE PHOTO
-	cam = CameraBot()
-	cam.takephoto(file)
-	cam.closecam()
+	cameraBot.takephoto(file)
+	cameraBot.closecam()
 
 	# ANALYZE THE PHOTO
-	c = CaptionBot() 
-	v = VisionBot()
-	w = WatsonBot()
+	caption = captionBot.file_caption(file)
+	vision = visionBot.file_caption(file)
+	watson = watsonBot.see_anyone(file)
 
-	print(c.file_caption(file))
-	print(v.file_caption(file))
-	print(w.see_anyone(file))
+	print(caption)
+	print(vision)
+	print(watson)
 
 	# SPEAK TO THE USER 
 
 	# STORE THE QUERY + INFO
+	path = storeBot.movefile(file)
+	storeBot.log(path, caption, vision, watson)
 	
 
 if __name__ == '__main__':
