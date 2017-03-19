@@ -2,6 +2,7 @@ import picamera
 from captionbot import CaptionBot
 from GoogleAPI.visionbot import VisionBot
 from IBM.bot import WatsonBot
+import os
 
 def takephoto():
 	camera = picamera.PiCamera()
@@ -24,7 +25,7 @@ def main():
 	print(w.see_anyone(file))
 
 	# SPEAK TO THE USER 
-
+	os.system("./speak.sh " + c.file_caption(file) +" "+ v.file_caption(file) +" "+ w.see_anyone(file))
 	# STORE THE QUERY + INFO
 	
 
