@@ -6,43 +6,52 @@
                 {
                     "classes": [
                         {
-                            "class": "guitarist",
-                            "score": 0.703,
-                            "type_hierarchy": "/person/entertainer/musician/guitarist"
+                            "class": "controller",
+                            "score": 0.647,
+                            "type_hierarchy": "/device/controller"
                         },
                         {
-                            "class": "musician",
-                            "score": 0.707
+                            "class": "device",
+                            "score": 0.832
                         },
                         {
-                            "class": "entertainer",
-                            "score": 0.707
+                            "class": "remote control",
+                            "score": 0.599,
+                            "type_hierarchy": "/device/remote control"
                         },
                         {
-                            "class": "person",
-                            "score": 0.755
+                            "class": "strip lighting",
+                            "score": 0.566,
+                            "type_hierarchy": "/device/light source/strip lighting"
                         },
                         {
-                            "class": "disk jockey",
-                            "score": 0.578,
-                            "type_hierarchy": "/person/disk jockey"
+                            "class": "light source",
+                            "score": 0.569
                         },
                         {
-                            "class": "weld",
+                            "class": "billiard ball",
+                            "score": 0.562
+                        },
+                        {
+                            "class": "ball",
+                            "score": 0.562
+                        },
+                        {
+                            "class": "video display",
                             "score": 0.554,
-                            "type_hierarchy": "/junction/joint/weld"
+                            "type_hierarchy": "/electronic device/video display"
                         },
                         {
-                            "class": "joint",
-                            "score": 0.554
+                            "class": "electronic device",
+                            "score": 0.59
                         },
                         {
-                            "class": "junction",
-                            "score": 0.554
+                            "class": "blue color",
+                            "score": 0.664
                         },
                         {
-                            "class": "coal black color",
-                            "score": 0.97
+                            "class": "steel blue color",
+                            "score": 0.592
                         }
                     ],
                     "classifier_id": "default",
