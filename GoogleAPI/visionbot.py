@@ -27,7 +27,7 @@ class VisionBot:
 			return a dictionary with important info from image analysis
 			which has confidence over 75%
 		'''
-		returndict = {"FACE_DETECTION": {"low": [], "mid": [], "high": []}, 
+		returndict = {"FACE_DETECTION": [], 
 			"LABEL_DETECTION": {"low": [], "mid": [], "high": []},
 			"LANDMARK_DETECTION": {"low": [], "mid": [], "high": []},
 			"LOGO_DETECTION": {"low": [], "mid": [], "high": []},
@@ -72,7 +72,7 @@ class VisionBot:
 				emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
 				i = 0
 				for face in faceres: 
-					returndict["FACE_DETECTION"][i] = {"low": "", "mid": "", "high": ""}
+					returndict["FACE_DETECTION"].append({"low": "", "mid": "", "high": ""})
 					for emo in emotions: 
 						if face[emo[0]] > 0.9: 
 							returndict["FACE_DETECTION"][i]["high"] = emo[1]
