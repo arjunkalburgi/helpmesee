@@ -9,9 +9,12 @@ def takephoto():
 	camera.capture('image.jpg')
 
 def main(): 
+	# TAKE THE PHOTO
 	file = "image.jpg"
 	takephoto()
+	camera.stop()
 
+	# ANALYZE THE PHOTO
 	c = CaptionBot() 
 	v = VisionBot()
 	w = WatsonBot()
@@ -20,7 +23,10 @@ def main():
 	print(v.file_caption(file))
 	print(w.see_anyone(file))
 
-	camera.stop()
+	# SPEAK TO THE USER 
+
+	# STORE THE QUERY + INFO
+	
 
 if __name__ == '__main__':
 	main()
