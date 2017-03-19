@@ -64,7 +64,7 @@ class VisionBot:
 			})
 			response = service_request.execute()
 
-			print(response)
+			print json.dumps(response, sort_keys=True, indent=4)
 
 			# FACES
 			if "faceAnnotations" in response["responses"][0]:
