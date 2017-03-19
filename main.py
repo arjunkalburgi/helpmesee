@@ -1,6 +1,7 @@
 import picamera
 from captionbot import CaptionBot
 from GoogleAPI.visionbot import VisionBot
+from IBM.bot import Watson
 
 def takephoto():
 	camera = picamera.PiCamera()
@@ -13,9 +14,11 @@ def main():
 
 	c = CaptionBot() 
 	v = VisionBot()
+	w = Watson()
 
 	print(c.file_caption(file))
 	print(v.file_caption(file))
+	print(w.seeAnyone(file))
 
 if __name__ == '__main__':
 	main()
