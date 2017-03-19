@@ -67,7 +67,7 @@ class VisionBot:
 			print(response)
 
 			# FACES
-			if response["responses"][0]["faceAnnotations"]: 
+			if "faceAnnotations" in response["responses"][0]:
 				faceres = response["responses"][0]["faceAnnotations"]
 				emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
 				i = 0
@@ -76,63 +76,51 @@ class VisionBot:
 					for emo in emotions: 
 						if face[emo[0]] > 0.9: 
 							returndict["FACE_DETECTION"][i]["high"] = emo[1]
-							num_high_conf = num_high_conf + 1
 						elif face[emo[0]] > 0.8: 
 							returndict["FACE_DETECTION"][i]["mid"] = emo[1]
-							num_mid_conf = num_mid_conf + 1
 						elif face[emo[0]] > 0.7: 
 							returndict["FACE_DETECTION"][i]["low"] = emo[1]
-							num_low_conf = num_low_conf + 1
 					i = i + 1
 
 			# LABELS 
-			if response["responses"][0]["labelAnnotations"]: 
+			if "labelAnnotations" in response["responses"][0]:
 				labelres = response["responses"][0]["labelAnnotations"]
 				for label in labelres: 
 					if label["score"] > 0.9: 
 						returndict["LABEL_DETECTION"]["high"].append(label["description"])
-						num_high_conf = num_high_conf + 1
 					elif label["score"] > 0.8: 
 						returndict["LABEL_DETECTION"]["mid"].append(label["description"])
-						num_mid_conf = num_mid_conf + 1
 					elif label["score"] > 0.7: 
 						returndict["LABEL_DETECTION"]["low"].append(label["description"])
-						num_low_conf = num_low_conf + 1
 
 			# TEXT 
-			if response["responses"][0]["textAnnotations"]: 
+			if "textAnnotations" in response["responses"][0]:
 				textres = response["responses"][0]["textAnnotations"]
 				for text in textres: 
 					if "locale" in text: 
 						returndict["TEXT_DETECTION"].append(text["description"])
 
 			# LANDMARK 
-			if response["responses"][0]["landmarkAnnotations"]: 
+			if "landmarkAnnotations" in response["responses"][0]:
 				landres = response["responses"][0]["landmarkAnnotations"]
 				for landmark in landres: 
 					if landmark["score"] > 0.9:
 						returndict["LANDMARK_DETECTION"]["high"].append(landmark["description"])
-						num_high_conf = num_high_conf + 1
 					elif landmark["score"] > 0.8: 
 						returndict["LANDMARK_DETECTION"]["mid"].append(landmark["description"])
-						num_mid_conf = num_mid_conf + 1
 					elif landmark["score"] > 0.7: 
 						returndict["LANDMARK_DETECTION"]["low"].append(landmark["description"])
-						num_low_conf = num_low_conf + 1
 
 			# LOGO
-			if response["responses"][0]["logoAnnotations"]: 
+			if "logoAnnotations" in response["responses"][0]:
 				logores = response["responses"][0]["logoAnnotations"]
 				for logo in logores: 
 					if logo["score"] > 0.9:
 						returndict["LOGO_DETECTION"]["high"].append(logo["description"])
-						num_high_conf = num_high_conf + 1
 					elif logo["score"] > 0.8: 
 						returndict["LOGO_DETECTION"]["mid"].append(logo["description"])
-						num_mid_conf = num_mid_conf + 1
 					elif logo["score"] > 0.7: 
 						returndict["LOGO_DETECTION"]["low"].append(logo["description"])
-						num_low_conf = num_low_conf + 1
 
 		return returndict
 
@@ -160,9 +148,6 @@ class VisionBot:
 		'LABEL_DETECTION': {'high': ['cat', 'mammal'], 'low': ['whiskers'], 'mid': []}}
 		'''
 		photoanalysis = photoanalysisarray[0]
-		num_high_conf = photoanalysisarray[1]
-		num_mid_conf = photoanalysisarray[2]
-		num_low_conf = photoanalysisarray[3]
 
 
 		sentence = ""
