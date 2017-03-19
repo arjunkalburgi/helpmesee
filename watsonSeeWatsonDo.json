@@ -6,42 +6,61 @@
                 {
                     "classes": [
                         {
-                            "class": "storage space",
-                            "score": 0.648
+                            "class": "air filter",
+                            "score": 0.649,
+                            "type_hierarchy": "/device/air filter"
                         },
                         {
-                            "class": "drawer",
-                            "score": 0.568
+                            "class": "filter",
+                            "score": 0.652
                         },
                         {
-                            "class": "camper trailer",
-                            "score": 0.561,
-                            "type_hierarchy": "/vehicle/camper trailer"
+                            "class": "device",
+                            "score": 0.82
                         },
                         {
-                            "class": "vehicle",
-                            "score": 0.561
+                            "class": "piano accordion",
+                            "score": 0.601,
+                            "type_hierarchy": "/device/musical instrument/piano accordion"
                         },
                         {
-                            "class": "cooler",
+                            "class": "musical instrument",
+                            "score": 0.701
+                        },
+                        {
+                            "class": "grand piano",
+                            "score": 0.591,
+                            "type_hierarchy": "/device/musical instrument/grand piano"
+                        },
+                        {
+                            "class": "piano",
+                            "score": 0.602
+                        },
+                        {
+                            "class": "cabinet",
+                            "score": 0.555,
+                            "type_hierarchy": "/room/compartment/cabinet"
+                        },
+                        {
+                            "class": "compartment",
+                            "score": 0.556
+                        },
+                        {
+                            "class": "room",
+                            "score": 0.557
+                        },
+                        {
+                            "class": "heat sink",
                             "score": 0.554,
-                            "type_hierarchy": "/appliance/refrigerator/cooler"
+                            "type_hierarchy": "/device/heat sink"
                         },
                         {
-                            "class": "refrigerator",
-                            "score": 0.564
+                            "class": "indigo color",
+                            "score": 0.542
                         },
                         {
-                            "class": "appliance",
-                            "score": 0.567
-                        },
-                        {
-                            "class": "olive green color",
-                            "score": 0.614
-                        },
-                        {
-                            "class": "ash grey color",
-                            "score": 0.565
+                            "class": "azure color",
+                            "score": 0.528
                         }
                     ],
                     "classifier_id": "default",
