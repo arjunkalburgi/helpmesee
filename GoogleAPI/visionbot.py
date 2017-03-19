@@ -199,7 +199,7 @@ class VisionBot:
 			sentence = sentence + ". "
 
 		text = photoanalysis["TEXT_DETECTION"]
-		if text[0]: 
+		if len(text) > 0: 
 			sentence = sentence + "It has text saying "
 			first = True
 			for t in text: 
