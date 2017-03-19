@@ -317,7 +317,7 @@ def main():
 	photoanalysis = analyzephoto()
 
 	# CREATE OUTPUT 
-	speakanalysis(photoanalysis)
+	return speakanalysis(photoanalysis)
 
 	# SAVE PHOTO AND DATA
 	# storedetection()
