@@ -111,38 +111,62 @@ def speakanalysis(photoanalysis):
 				sentence = sentence + ", and " + t
 		sentence = sentence + ". "
 
-	highconfface = photoanalysis["FACE_DETECTION"]["high"]
-	midconfface = photoanalysis["FACE_DETECTION"]["mid"]
-	lowconfface = photoanalysis["FACE_DETECTION"]["low"]
-	if highconfface or midconfface or lowconfface: 
-		sentence = sentence + "There's a face or multiple faces "
-		if highconfface: 
-			sentence = sentence + "that express "
-			first = True
-			for exp in highconfface: 
-				if first: 
-					sentence = sentence + exp + " "
-					first = False 
-				else: 
-					sentence = sentence + "or " + exp + " "
-		elif midconfface: 
-			sentence = sentence + "that could express "
-			first = True
-			for exp in highconfface: 
-				if first: 
-					sentence = sentence + exp
-					first = False 
-				else: 
-					sentence = sentence + "or " + exp
-		elif lowconfface: 
-			sentence = sentence + "that might express "
-			first = True
-			for exp in highconfface: 
-				if first: 
-					sentence = sentence + exp
-					first = False 
-				else: 
-					sentence = sentence + "or " + exp
+	if len(photoanalysis["FACE_DETECTION"]) > 0: 
+		if len(photoanalysis["FACE_DETECTION"]) > 1: 
+			sentence = sentence + "There are " + len(photoanalysis["FACE_DETECTION"]) + " faces showing "
+			# ONE EMOTION PER FACE
+			emos = {"high": [], "mid": [], "low": []}
+			for face in photoanalysis["FACE_DETECTION"]: 
+				if len(face["high"]) > 0: 
+					emos["high"].append(face["high"])
+				if len(face["mid"]) > 0: 
+					emos["mid"].append(face["mid"])
+				if len(face["low"]) > 0: 
+					emos["low"].append(face["low"])
+			if len(face["high"]) > 0: 
+				first = True
+				for emo in face["high"]: 
+					if first: 
+						sentence = sentence + emo + " "
+						first = False
+					else: 
+						sentence = sentence + "and " + emo + " "
+				if len(face["mid"]) or len(face["low"]): 
+					sentence = sentence + ", "
+			if len(face["mid"]) > 0: 
+				sentence = sentence + "signs of "
+				first = True
+				for emo in face["mid"]: 
+					if first: 
+						sentence = sentence + emo + " "
+						first = False
+					else: 
+						sentence = sentence + "and " + emo + " "
+				if len(face["low"]): 
+					sentence = sentence + ", "
+			if len(face["low"]) > 0: 
+				sentence = sentence + "slight signs of "
+				first = True
+				for emo in face["low"]: 
+					if first: 
+						sentence = sentence + emo + " "
+						first = False
+					else: 
+						sentence = sentence + "and " + emo + " "
+
+		else: 
+			sentence = sentence + "There is one face that "
+
+			highconfface = photoanalysis["FACE_DETECTION"][0]["high"]
+			midconfface = photoanalysis["FACE_DETECTION"][0]["mid"]
+			lowconfface = photoanalysis["FACE_DETECTION"][0]["low"]
+
+			if highconfface: 
+				sentence = sentence + "is expressing " + highconfface + ". "
+			elif midconfface: 
+				sentence = sentence + "seems to express " + midconfface + ". "
+			elif lowconfface: 
+				sentence = sentence + "could be expressing " + highconfface + ". "
 		sentence = sentence + ". "
 
 	highconflandmark = photoanalysis["LANDMARK_DETECTION"]["high"]
@@ -222,18 +246,22 @@ def readFACES(returndict, response):
 	num_high_conf = 0
 	num_mid_conf = 0
 	num_low_conf = 0
-	faceres = response["responses"][0]["faceAnnotations"][0]
+	faceres = response["responses"][0]["faceAnnotations"]
 	emotions = [("joyLikelihood", "joy"), ("sorrowLikelihood", "sorrow"), ("angerLikelihood", "anger"), ("surpriseLikelihood", "shock")]
-	for emo in emotions: 
-		if faceres[emo[0]] > 0.9: 
-			returndict["FACE_DETECTION"]["high"].append(emo[1])
-			num_high_conf = num_high_conf + 1
-		elif faceres[emo[0]] > 0.8: 
-			returndict["FACE_DETECTION"]["mid"].append(emo[1])
-			num_mid_conf = num_mid_conf + 1
-		elif faceres[emo[0]] > 0.7: 
-			returndict["FACE_DETECTION"]["low"].append(emo[1])
-			num_low_conf = num_low_conf + 1
+	i = 0
+	for face in faceres: 
+		returndict["FACE_DETECTION"][i] = {"low": [], "mid": [], "high": []}
+		for emo in emotions: 
+			if face[emo[0]] > 0.9: 
+				returndict["FACE_DETECTION"][i]["high"].append(emo[1])
+				num_high_conf = num_high_conf + 1
+			elif face[emo[0]] > 0.8: 
+				returndict["FACE_DETECTION"][i]["mid"].append(emo[1])
+				num_mid_conf = num_mid_conf + 1
+			elif face[emo[0]] > 0.7: 
+				returndict["FACE_DETECTION"][i]["low"].append(emo[1])
+				num_low_conf = num_low_conf + 1
+		i = i + 1
 	return returndict
 
 # LABELS 

@@ -519,8 +519,8 @@ data = {
   ]
 }
 
-
-returndict = {"FACE_DETECTION": {"low": [], "mid": [], "high": []}, 
+# {"low": [], "mid": [], "high": []}
+returndict = {"FACE_DETECTION": [], 
   "LABEL_DETECTION": {"low": [], "mid": [], "high": []},
   "LANDMARK_DETECTION": {"low": [], "mid": [], "high": []},
   "LOGO_DETECTION": {"low": [], "mid": [], "high": []},
