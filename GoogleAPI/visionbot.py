@@ -207,10 +207,10 @@ class VisionBot:
 					sentence = sentence + t
 				else: 
 					sentence = sentence + "and " + t
-
+		print json.dumps(photoanalysis, sort_keys=True, indent=4)
 		if len(photoanalysis["FACE_DETECTION"]) > 0: 
 			if len(photoanalysis["FACE_DETECTION"]) > 1: 
-				sentence = sentence + "There are " + len(photoanalysis["FACE_DETECTION"]) + " faces showing "
+				sentence = sentence + "There are " + str(len(photoanalysis["FACE_DETECTION"])) + " faces showing "
 				# ONE EMOTION PER FACE
 				emos = {"high": [], "mid": [], "low": []}
 				for face in photoanalysis["FACE_DETECTION"]: 
