@@ -1,0 +1,65 @@
+{
+    "custom_classes": 2,
+    "images": [
+        {
+            "classifiers": [
+                {
+                    "classes": [
+                        {
+                            "class": "controller",
+                            "score": 0.647,
+                            "type_hierarchy": "/device/controller"
+                        },
+                        {
+                            "class": "device",
+                            "score": 0.832
+                        },
+                        {
+                            "class": "remote control",
+                            "score": 0.599,
+                            "type_hierarchy": "/device/remote control"
+                        },
+                        {
+                            "class": "strip lighting",
+                            "score": 0.566,
+                            "type_hierarchy": "/device/light source/strip lighting"
+                        },
+                        {
+                            "class": "light source",
+                            "score": 0.569
+                        },
+                        {
+                            "class": "billiard ball",
+                            "score": 0.562
+                        },
+                        {
+                            "class": "ball",
+                            "score": 0.562
+                        },
+                        {
+                            "class": "video display",
+                            "score": 0.554,
+                            "type_hierarchy": "/electronic device/video display"
+                        },
+                        {
+                            "class": "electronic device",
+                            "score": 0.59
+                        },
+                        {
+                            "class": "blue color",
+                            "score": 0.664
+                        },
+                        {
+                            "class": "steel blue color",
+                            "score": 0.592
+                        }
+                    ],
+                    "classifier_id": "default",
+                    "name": "default"
+                }
+            ],
+            "image": "image.jpg"
+        }
+    ],
+    "images_processed": 1
+}
