@@ -23,9 +23,9 @@ https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software
 
 
 To run:
-'''
+```python
 cd nwHacks
 sudo su
 export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json
 python ser.py
-'''
+```
