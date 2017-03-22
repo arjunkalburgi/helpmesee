@@ -20,3 +20,11 @@ What's next for Let Me See
 We want to further improve our analysis and reduce our analyzing time.
 
 https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/000/489/350/datas/gallery.jpg
+
+
+To run:
+
+cd nwHacks
+sudo su
+export GOOGLE_APPLICATION_CREDENTIALS=apiKey.json
+python ser.py
